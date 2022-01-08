@@ -1,0 +1,246 @@
+:root {
+    --fast: .25s;
+    --normal: .5s;
+    --slow: 1s;
+    --snail: 2s;
+
+    --_1: rgb(25, 25, 25);
+
+    --action: rgb(0,107,255);
+    --action_1: rgb(25,132,255);
+
+    --location: rgb(0,255,135);
+    --location_1: rgb(60, 255, 150);
+
+    --text-lightsurface: rgb(20, 20, 20);
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+    bottom: 0;
+}
+
+*:not(code) {
+    font-family: sans-serif;
+    font-weight: bold;
+    color: white;
+    margin: 0;
+    text-decoration: none;
+    padding: 0;
+}
+
+nav > * {
+    list-style: none;
+}
+
+nav {
+    position: absolute;
+}
+
+.container {
+    scroll-snap-type: y mandatory; 
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+section {
+    height: 100vh;
+    scroll-snap-align: start;
+    scroll-behavior: smooth;
+}
+
+.card {
+    background-color: white;
+    border-radius: 5px;
+    width: 200px;
+    margin: 5px;
+}
+
+.card-body {
+    padding: 5px;
+}
+
+.card.rounded {
+    border-radius: 5px;
+}
+
+.card > .card-img.top {
+    position: relative;
+    top: 0;
+}
+
+.card > .card-img.bottom {
+    position: relative;
+    bottom: 0;
+}
+
+.card.rounded > .card-img.top {
+    position: relative;
+    top: 0;
+    border-radius: 5px 5px 0 0;
+}
+
+.card.rounded > .card-img.bottom {
+    position: relative;
+    bottom: 0;
+    border-radius: 0 0 5px 5px;
+}
+
+.card img {
+    width: 100%;
+}
+
+.card *:not(button) {
+    color: var(--text-lightsurface);
+}
+
+button {
+    background-color: var(--action);
+    border-radius: 5px;
+    border: none;
+    padding: 5px 10px;
+    transition: background-color var(--fast);
+    margin: 5px;
+}
+
+button:hover {
+    background-color: var(--action_1);
+}
+
+button[link] {
+    background-color: var(--location);
+}
+
+button[link]:hover {
+    background-color: var(--location_1);
+}
+
+button[view] {
+    background-color: var(--location);
+}
+
+button[view]:hover {
+    background-color: var(--location_1);
+}
+
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center-v {
+    display: flex;
+    align-items: center;
+}
+
+.center-h {
+    display: flex;
+    justify-content: center;
+}
+
+.bigger-than {
+    overflow: auto;
+}
+
+.align-center {
+    text-align: center;
+}
+
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.align-left {
+    display: flex;
+    justify-content: left;
+}
+
+section:nth-child(odd) {
+    background-color: rgb(20,20,20);
+}
+
+section:nth-child(even) {
+    background-color: rgb(30,30,30);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: clamp(100px, 80%, 500px);
+}
+
+.form > * {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.form > *:not(button) {
+    text-align: center;
+}
+
+.form > input {
+    width: 100%;
+}
+
+.form > textarea {
+    width: 100%;
+    resize: vertical;
+}
+
+.lastpage > .toTopButton {
+    position: absolute;
+    opacity: 0;
+    bottom: 0;
+    right: 40px;
+    transition: all var(--fast) ease-in-out;
+
+}
+
+.lastpage.visible > .toTopButton {
+    opacity: 1;
+    bottom: 30px;
+}
+
+
+.slide-up {
+    transition: all var(--slow) ease-in-out;
+    margin-top: 30px;
+    opacity: 0;
+}
+
+.slide-up.visible {
+    opacity: 1;
+    margin-top: 0;
+}
+
+.project-card {
+    width: 80%;
+}
+
+code.afterColor, code.afterColor2 {
+    transition: color var(--slow) ease-in-out;
+}
+
+.detect.visible code.afterColor {
+    color:lawngreen;
+}
+
+.detect.visible code.afterColor2 {
+    color: palevioletred;
+}
+
+
