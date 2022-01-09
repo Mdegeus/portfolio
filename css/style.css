@@ -48,7 +48,7 @@ nav {
 
 section {
     height: 100vh;
-    scroll-snap-align: start;
+    scroll-snap-align: center;
     scroll-behavior: smooth;
 }
 
@@ -126,7 +126,6 @@ button[view]:hover {
     background-color: var(--location_1);
 }
 
-
 .center {
     display: flex;
     justify-content: center;
@@ -144,7 +143,8 @@ button[view]:hover {
 }
 
 .bigger-than {
-    overflow: auto;
+    overflow-x: scroll;
+    overflow-y: scroll;
 }
 
 .align-center {
@@ -216,6 +216,25 @@ section:nth-child(even) {
 }
 
 
+.project-card {
+    width: 80%;
+}
+
+code.afterColor, code.afterColor2 {
+    transition: color var(--fast) ease-in-out var(--slow);
+}
+
+.detect.visible code.afterColor {
+    color:lawngreen;
+}
+
+.detect.visible code.afterColor2 {
+    color: palevioletred;
+}
+
+
+/* #region basic animations */
+
 .slide-up {
     transition: all var(--slow) ease-in-out;
     margin-top: 30px;
@@ -227,20 +246,38 @@ section:nth-child(even) {
     margin-top: 0;
 }
 
-.project-card {
-    width: 80%;
+.pop-in {
+    transition: all var(--normal) ease-in-out, opacity var(--fast) ease-out;
+    transform: scale(1.1);
+    opacity: 0; 
 }
 
-code.afterColor, code.afterColor2 {
-    transition: color var(--slow) ease-in-out;
+.pop-in.visible {
+    transform: scale(1);
+    opacity: 1; 
 }
 
-.detect.visible code.afterColor {
-    color:lawngreen;
+.pop-out {
+    transition: all var(--normal) ease-in-out, opacity var(--fast) ease-out;
+    transform: scale(.8);
+    opacity: 0; 
 }
 
-.detect.visible code.afterColor2 {
-    color: palevioletred;
+.pop-out.visible {
+    transform: scale(1);
+    opacity: 1; 
 }
 
+.bounce {
+    transition: all var(--slow) cubic-bezier(0, 1.09, 0.53, 1.28), opacity var(--fast) ease-out;
+    transform: scale(.5);
+    opacity: 0; 
+}
+
+.bounce.visible {
+    transform: scale(1);
+    opacity: 1; 
+}
+
+/* #endregion basic animations */
 

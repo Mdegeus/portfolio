@@ -54,11 +54,14 @@ function IsVisible(element, setVariable, otherElement) {
     return false;
 }
 
-setInterval(function() {
+function CheckIfVisibleAll() { /// checks if all elements with class detect are visible
     const detect = document.querySelectorAll(".detect");
 
     detect.forEach((current) => {
-        IsVisible(current, true);
+        IsVisible(current, true); /// check if visable, if the element is. automaticly asign or remove visible class.
     })
-    
-},250)
+}
+
+CheckIfVisibleAll()
+
+document.querySelector(".container").addEventListener("scroll", CheckIfVisibleAll);
