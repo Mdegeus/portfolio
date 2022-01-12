@@ -21,7 +21,6 @@ buttons.forEach((button) => {
             targetElement.scrollIntoView({
                 behavior: "smooth"
             });
-            console.log(targetElement)
         }
 
     })
@@ -54,11 +53,27 @@ function IsVisible(element, setVariable, otherElement) {
     return false;
 }
 
-function CheckIfVisibleAll() { /// checks if all elements with class detect are visible
+function CheckIfVisibleAll() { /// checks all elements with class detect, wether they need to become visible or not
     const detect = document.querySelectorAll(".detect");
+    const sequanceDetect = document.querySelectorAll(".sequance-detect");
 
     detect.forEach((current) => {
-        IsVisible(current, true); /// check if visable, if the element is. automaticly asign or remove visible class.
+        IsVisible(current, true);
+    }) 
+
+    sequanceDetect.forEach((current) => {
+
+        const detect = current.querySelectorAll(".detect-child");
+
+        let i = 0;
+
+        detect.forEach((current) => {
+            setTimeout(() => {
+                IsVisible(current, true);
+            }, i*250)
+            i++;
+        }) 
+
     })
 }
 
