@@ -55,7 +55,7 @@ function IsVisible(element, setVariable, otherElement) {
 
 function CheckIfVisibleAll() { /// checks all elements with class detect, wether they need to become visible or not
     const detect = document.querySelectorAll(".detect");
-    const sequanceDetect = document.querySelectorAll(".sequance-detect");
+    const sequanceDetect = document.querySelectorAll(".sequance-detect"); /// sequanceDetect is used to detect elements in a sequance to play animations with an extra delay per element.
 
     detect.forEach((current) => {
         IsVisible(current, true);
@@ -68,10 +68,15 @@ function CheckIfVisibleAll() { /// checks all elements with class detect, wether
         let i = 0;
 
         detect.forEach((current) => {
-            setTimeout(() => {
+
+            if (IsVisible(current)) {
+                setTimeout(() => {
+                    IsVisible(current, true);
+                }, i*250)
+                i++;
+            } else {
                 IsVisible(current, true);
-            }, i*250)
-            i++;
+            }
         }) 
 
     })

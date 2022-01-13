@@ -33,6 +33,7 @@ html, body {
     list-style: none;
 }
 
+
 ::-webkit-scrollbar {
     background: rgb(20,20,20);
     width: 8px;
@@ -50,6 +51,26 @@ nav > * {
 
 nav {
     position: absolute;
+    padding: 15px 5px;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+}
+
+nav ul li{
+    padding-left: 10px;
+}
+
+nav ul li .title{
+    padding-right: 10px;
+}
+
+nav .title {
+    font-size: 30px;
 }
 
 .container {
@@ -62,6 +83,7 @@ section {
     height: 100vh;
     scroll-snap-align: center;
     scroll-behavior: smooth;
+    padding: 15px;
 }
 
 button {
@@ -69,28 +91,37 @@ button {
     border-radius: 5px;
     border: none;
     padding: 5px 10px;
-    transition: background-color var(--fast);
+    transition: background-color var(--fast), transform var(--fast);
     margin: 5px;
+}
+
+button:active {
+    transform: scale(.9);
 }
 
 button:hover {
     background-color: var(--action_1);
+    box-shadow: 0 0 8px var(--action_1);
 }
 
 button[link] {
     background-color: var(--location);
+    box-shadow: 0 0 8px var(--location);
 }
 
 button[link]:hover {
     background-color: var(--location_1);
+    box-shadow: 0 0 8px var(--location_1);
 }
 
 button[view] {
     background-color: var(--location);
+    box-shadow: 0 0 8px var(--location);
 }
 
 button[view]:hover {
     background-color: var(--location_1);
+    box-shadow: 0 0 8px var(--location_1);
 }
 
 .center {
@@ -286,7 +317,7 @@ code.afterColor, code.afterColor2 {
     display: flex;
     flex-direction: row;
     min-width: clamp(150px, 250px, 250px);
-    width: 80%;
+    width: 90%;
     height: fit-content;
     max-height: 400px;
     overflow: hidden;
@@ -306,8 +337,7 @@ code.afterColor, code.afterColor2 {
 }
 
 .card {
-    display: grid;
-    grid-template-rows: 100% 100%;
+    position: relative;
     scroll-snap-align: start;
     width: var(--CardWith);
     height: clamp(80px, 400px, 400px);
@@ -319,11 +349,13 @@ code.afterColor, code.afterColor2 {
 }
 
 .card .title {
-    transform: translateY(95%);
+    position: absolute;
+    transform: translateY(85%);
     color: rgb(137, 54, 245);
     text-shadow: 0 0 15px;
     font-size: 1.2em;
     transition: all var(--normal);
+    height: 100%;
 }
 
 .card:hover .title {
@@ -332,14 +364,46 @@ code.afterColor, code.afterColor2 {
 }
 
 .card-content {
+    position: absolute;
     opacity: 0;
-    transform: translateY(10%);
+    transform: translateY(100%);
     transition: all var(--normal);
     height: 100%;
 }
 
+.card-logo {
+    position: absolute;
+    justify-content: center;
+    left: 25%;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    z-index: 2;
+    transition: all var(--normal);
+}
+
+.card:hover .card-logo.rotate {
+    opacity: 0;
+    transform: rotate(180deg);
+}
+
+.card:hover .card-logo.resize {
+    opacity: 0;
+    transform: scale(.7);
+}
+
+.card:hover .card-logo.rotate.resize {
+    opacity: 0;
+    transform: rotate(180deg) scale(.7);
+}
+
+.card:hover .card-logo.slide-up {
+    opacity: 0;
+    transform: translateY(-70%);
+}
+
 .card:hover .card-content {
     opacity: 1;
-    transform: translateY(-80%);
+    transform: translateY(20%);
 }
 
