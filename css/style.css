@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
 :root {
     --fast: .25s;
     --normal: .5s;
@@ -15,16 +17,26 @@
     --text-lightsurface: rgb(20, 20, 20);
 }
 
+*, *::after, *::before {
+    box-sizing: border-box;
+   }
+
 html, body {
     margin: 0;
     padding: 0;
-    height: 100vh;
-    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    overflow-x: hidden;
     bottom: 0;
 }
 
+.pageContainer {
+    padding: 90px 40px 40px 40px !important;
+}
+
 *:not(code) {
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: bold;
     color: white;
     margin: 0;
@@ -81,7 +93,9 @@ nav .title {
 
 section {
     height: 100vh;
-    scroll-snap-align: center;
+    width: 100vw;
+    overflow: hidden;
+    scroll-snap-align: start;
     scroll-behavior: smooth;
     padding: 15px;
 }
@@ -95,8 +109,12 @@ button {
     margin: 5px;
 }
 
+button:hover {
+    transform: scale(1.1);
+}
+
 button:active {
-    transform: scale(.9);
+    transform: scale(.95);
 }
 
 button:hover {
@@ -128,6 +146,10 @@ button[view]:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.text-center {
+    text-align: center;
 }
 
 .center-v {

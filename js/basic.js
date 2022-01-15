@@ -1,3 +1,6 @@
+import {setPageDataToStorage} from "./projectpage.builder.js";
+import {p1} from "./pagedata.js";
+
 const buttons = document.querySelectorAll('button')
 const aLinks = document.querySelectorAll('a')
 
@@ -7,12 +10,24 @@ buttons.forEach((button) => {
         if (button.getAttribute('link')) {
             const targetLocation = button.getAttribute('link');
             const goToBlank = button.getAttribute('target') === "_blank";
+            let delay = button.getAttribute('delay');
 
-            if (!goToBlank) {
-                location.href = targetLocation;
-            } else {
-                window.open(targetLocation);
+            if (!delay) {
+                delay = 0;
             }
+
+            if (button.getAttribute('createPage')) {
+                const page = button.getAttribute('createPage');
+                setPage(page);
+            }
+
+            setTimeout(() => {
+                if (!goToBlank) {
+                    location.href = targetLocation;
+                } else {
+                    window.open(targetLocation);
+                }
+            },delay);
 
         } else if (button.getAttribute('view')) {
             const elementSearchKey = button.getAttribute('view');
@@ -31,7 +46,7 @@ function IsVisible(element, setVariable, otherElement) {
         let position = element.getBoundingClientRect();
 
         // checking whether visible or not
-        if(position.top >= 0 && position.bottom <= window.innerHeight + 10) {
+        if(position.top >= -10 && position.bottom <= window.innerHeight + 10) {
             if (setVariable) {
                 element.classList.add("visible")
             }
@@ -84,4 +99,14 @@ function CheckIfVisibleAll() { /// checks all elements with class detect, wether
 
 CheckIfVisibleAll()
 
-document.querySelector(".container").addEventListener("scroll", CheckIfVisibleAll);
+if (document.querySelector(".container")) {
+    document.querySelector(".container").addEventListener("scroll", CheckIfVisibleAll);
+}
+
+function setPage(pagename) {
+    console.log(pagename)
+    const data = eval(pagename);
+
+    setPageDataToStorage(data);
+    return data;
+}
