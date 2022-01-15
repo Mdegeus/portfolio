@@ -1,5 +1,5 @@
 import {setPageDataToStorage} from "./projectpage.builder.js";
-import {p1} from "./pagedata.js";
+import {pages} from "./pagedata.js";
 
 const buttons = document.querySelectorAll('button')
 const aLinks = document.querySelectorAll('a')
@@ -97,15 +97,15 @@ function CheckIfVisibleAll() { /// checks all elements with class detect, wether
     })
 }
 
-CheckIfVisibleAll()
+setTimeout(CheckIfVisibleAll, 150)
 
 if (document.querySelector(".container")) {
     document.querySelector(".container").addEventListener("scroll", CheckIfVisibleAll);
 }
 
 function setPage(pagename) {
-    console.log(pagename)
-    const data = eval(pagename);
+
+    const data = pages[pagename];
 
     setPageDataToStorage(data);
     return data;

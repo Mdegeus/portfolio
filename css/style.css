@@ -388,9 +388,12 @@ code.afterColor, code.afterColor2 {
 .card-content {
     position: absolute;
     opacity: 0;
+    left: 0;
     transform: translateY(100%);
     transition: all var(--normal);
     height: 100%;
+    width: 100%;
+    padding: 15px;
 }
 
 .card-logo {
